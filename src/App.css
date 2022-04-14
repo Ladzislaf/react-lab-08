@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background: rgba(191, 255, 0, 0.23);
+}
+
+.commentsContainer {
+    margin: 20px;
+    border: 2px solid green;
+}
+
+.commentsList {
+    margin: 3px;
+    border: 2px solid yellow;
+}
+
+.commentItem {
+    margin: 5px;
+    background: rgba(128, 0, 128, 0.18);
+}
+
+.inputForm {
+    margin: 20px;
+    background: rgba(18, 183, 134, 0.18);
+}
