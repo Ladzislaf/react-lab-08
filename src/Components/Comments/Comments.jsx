@@ -1,27 +1,28 @@
-import React, {useEffect, useState} from 'react'
+import React, {useState} from 'react'
 import CommentsList from "./CommentsList"
 import CommentInput from "./CommentInput"
-
-// todo add change function for comment
-// Функция изменения, компонент СommentsEdit, должна содержать поле для изменения
-// текста сообщения и данные об изменяемом комментарии. Поле «Дата изменения» должно
-// изменить свое значение после редактирования комментария. Другие поля уже опубликованного
-// комментария должны быть неизменны.
-
-// todo изменить компонент ввода почты на тот, что из прошлых лаб
-
-// todo сделать запрет на добавление комментариев без name, text, secret word и с некорректной почтой
+import EditCommentInput from "./EditCommentInput"
 
 // todo сделать нормальные стили
 
 const Comments = () => {
     const [commentsList, setCommentsList] = useState([])
+    const [showEdit, setShowEdit] = useState(false)
+    const [commentToChange, setCommentToChange] = useState({})
 
-    const addNewComment = (e, newComment, setComment) => {
+    const addNewComment = (e, newComment, setComment, sending) => {
         e.preventDefault()
-        setCommentsList([...commentsList, {...newComment, id: Date.now(), date: new Date()}])
-        // clear inputs values
-        setComment({userName: '', email: '', image: '', text: '', secretWord: '',})
+        if (!sending.email) {
+            alert('Input correct email')
+            return
+        }
+        if (sending.userName && sending.text && sending.secretWord) {
+            setCommentsList([...commentsList, {...newComment, id: Date.now(), date: new Date()}])
+            // clear inputs values
+            setComment({userName: '', email: '', image: '', text: '', secretWord: '',})
+        } else {
+            alert('You need to set comment values')
+        }
     }
 
     const deleteComment = (secretWord) => {
@@ -38,17 +39,31 @@ const Comments = () => {
         alert('Incorrect secret word!')
     }
 
-    const editComment = () => {
+    const editComment = (commentDate) => {
+        setShowEdit(true)
 
+        for (let i = 0; i < commentsList.length; i++)
+            if (commentsList[i].date === commentDate) {
+                setCommentToChange(commentsList[i])
+            }
     }
 
-    useEffect(() => {
-        console.log(commentsList)
-    }, [commentsList])
+    const closeEdit = () => setShowEdit(false)
+
+    const confirmChanging = (newCommentValue) => {
+        for (let i = 0; i < commentsList.length; i++)
+            if (commentsList[i].id === commentToChange.id) {
+                let copy = commentsList.slice()
+                copy[i] = {...commentToChange, text: newCommentValue, date: new Date()}
+                setCommentsList(copy)
+                return
+            }
+    }
 
     return (
         <div className={'commentsContainer'}>
             <CommentsList commentsList={commentsList} deleteComment={deleteComment} editComment={editComment}/>
+            {showEdit && <EditCommentInput closeEdit={closeEdit} confirmChanging={confirmChanging}/>}
             <CommentInput addNewComment={addNewComment}/>
         </div>
     )

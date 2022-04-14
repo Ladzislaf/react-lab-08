@@ -37,3 +37,10 @@ body {
     padding: 10px;
     background: rgba(18, 70, 183, 0.18);
 }
+
+.editCommentInput {
+    margin: 20px;
+    padding: 10px;
+    background: rgba(18, 70, 183, 0.18);
+    text-align: center;
+}
