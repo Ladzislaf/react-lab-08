@@ -1,33 +1,39 @@
-import React from 'react'
+import React, {useState} from 'react'
+import Input from "../Input";
 
-const CommentInput = () => {
+import marshImage from '../../img/marsh.jpg'
+import creeperImage from '../../img/creeper.jpg'
+import animeImage from '../../img/anime.jpg'
+
+const CommentInput = ({addNewComment}) => {
+    const [comment, setComment] = useState({userName: '', email: '', image: '', text: '', secretWord: '',})
+
     return (
         <form className={"inputForm"}>
             <h3 style={{textAlign: "center"}}>Comment inputs</h3>
+            <Input name={'userName'} type="text" placeholder={'user name'} title={'User name'} value={comment.userName}
+                   onChange={(e) => setComment({...comment, userName: e.target.value})}/><br/>
+            <Input name={'userEmail'} type="text" placeholder={'email'} title={'Input email'} value={comment.email}
+                   onChange={(e) => setComment({...comment, email: e.target.value})}/><br/>
             <label>
-                Input name
-                <input name={'userName'} type="text"/>
-            </label><br/>
-            <label>
-                Select image
-                <select name="userImage" id="">
-                    <option value="https://thumbnailer.mixcloud.com/unsafe/900x900/extaudio/a/f/8/6/7c93-1ff4-4e00-ab21-1521a78bb9ab">marshmallow</option>
-                    <option value="https://imageproxy.ifunny.co/noop/user_photos/6e77031171d1f6f118b083fea6df0aefc66927e2_0.jpg%3F1431832546">creeper</option>
-                    <option value="https://pixelbox.ru/wp-content/uploads/2021/06/ava-steam-anime-tyan-94.jpg">anime girl</option>
+                Select image: <br/>
+                <select name="userImage" defaultValue={'default'}
+                        onChange={(e) => setComment({...comment, image: e.target.value})}>
+                    <option value="default" disabled hidden>Choose image</option>
+                    <option value={marshImage}>marshmallow</option>
+                    <option value={creeperImage}>creeper</option>
+                    <option value={animeImage}>anime girl</option>
                 </select>
             </label><br/>
             <label>
-                Input email
-                <input name={'userEmail'} type="text"/>
-            </label><br/>
-            <label>
                 Type your comment <br/>
-                <textarea name="" id="" cols="30" rows="10"></textarea>
+                <textarea cols="50" rows="3" style={{fontSize: '20px'}} value={comment.text}
+                          onChange={(e) => setComment({...comment, text: e.target.value})}></textarea>
             </label><br/>
-            <label>
-                Secret word for deleting?
-                <input name={'secretWord'} type="text"/>
-            </label><br/>
+            <Input name={'secretWord'} type="text" placeholder={'secret word'} title={'Secret word for deleting?'}
+                   value={comment.secretWord}
+                   onChange={(e) => setComment({...comment, secretWord: e.target.value})}/><br/>
+            <button onClick={(e) => addNewComment(e, comment, setComment)}>Add new comment</button>
         </form>
     )
 }

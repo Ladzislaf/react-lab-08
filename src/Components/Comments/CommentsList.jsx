@@ -1,17 +1,13 @@
-import React, {useState} from 'react'
+import React from 'react'
 import CommentItem from "./CommentItem"
 
-const CommentsList = () => {
-    const [commentsList, setCommetsList] = useState([
-        {id: 1, userName: 'Abobus', text: 'video ne ochen yaa schitau'},
-        {id: 2, userName: 'Vasya Pupkin', text: 'Nuuu takoe'},
-        {id: 3, userName: 'Lololoshka', text: 'Like podpiska'},
-    ])
-
+const CommentsList = ({commentsList, deleteComment, editComment}) => {
     return (
         <div className={'commentsList'}>
             {commentsList.map((comment) => {
-                return <CommentItem key={comment.id} commentInfo={comment}/>
+                return (
+                    <CommentItem key={comment.id} commentInfo={comment} deleteComment={deleteComment} editComment={editComment}/>
+                )
             })}
         </div>
     )
