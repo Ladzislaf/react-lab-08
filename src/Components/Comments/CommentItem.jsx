@@ -17,7 +17,7 @@ const CommentItem = ({commentInfo, deleteComment, editComment}) => {
         <div className={'commentItem'}>
             <h4>{commentInfo.userName}</h4>
             <img src={commentInfo.image} alt="" style={{width: '100px'}}/>
-            <p>{commentInfo.text}</p>
+            <p className={'textField'}>{commentInfo.text}</p>
             <button onClick={() => editComment(commentInfo.date)}>change</button>
             <button onClick={() => deleteComment(commentInfo.secretWord)}>delete</button>
             <button onClick={showInfo}>info</button> <br/>

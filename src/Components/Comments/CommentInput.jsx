@@ -55,7 +55,7 @@ const CommentInput = ({addNewComment}) => {
             </label>
             <br/>
 
-            <Input name={'secretWord'} type="text" placeholder={'secret word'} title={'Secret word'} value={comment.secretWord}
+            <Input name={'secretWord'} type="text" placeholder={'secret word'} autoComplete={'off'} title={'Secret word'} value={comment.secretWord}
                    onChange={(e) => setComment({...comment, secretWord: e.target.value})}/><br/>
 
             <button onClick={(e) => addNewComment(e, comment, setComment, sending)}>Add new comment</button>
