@@ -19,16 +19,16 @@ const Comments = () => {
         if (sending.userName && sending.text && sending.secretWord) {
             setCommentsList([...commentsList, {...newComment, id: Date.now(), date: new Date()}])
             // clear inputs values
-            setComment({userName: '', email: '', image: '', text: '', secretWord: '',})
+            setComment({...newComment, userName: '', email: '', text: '', secretWord: '',})
         } else {
             alert('You need to set comment values')
         }
     }
 
-    const deleteComment = (secretWord) => {
+    const deleteComment = (commentToDelete) => {
         let answer = prompt('Input a secret word for this comment')
         for (let i = 0; i < commentsList.length; i++) {
-            if (commentsList[i].secretWord === secretWord && secretWord === answer) {
+            if (commentsList[i].id === commentToDelete.id && commentToDelete.secretWord === answer) {
                 let copy = commentsList.slice()
                 copy.splice(i, 1)
                 setCommentsList(copy)

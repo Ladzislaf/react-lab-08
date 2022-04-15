@@ -5,7 +5,7 @@ const SignUpEmailInput = ({title, sending, setSending, ...props}) => {
 	const [color, setColor] = useState('')
 
 	const onEmailInput = (e) => {
-		if (e.target.value.match(/.@.+\..+/i)) setColor('green')
+		if (e.target.value.match(/\S+@\S+\.\S+/i)) setColor('green')
 		else setColor('red')
 		if (e.target.value === '') setColor('')
 	}
@@ -19,7 +19,7 @@ const SignUpEmailInput = ({title, sending, setSending, ...props}) => {
 		<div>
 			<label>
 				{title}: <br/>
-				<input className={"refactoredInput"} {...props} onInput={onEmailInput}/><br/>
+				<input className={"refactoredInput"} {...props} onChangeCapture={onEmailInput}/><br/>
 			</label>
 			<p style={{color:color}}>
 				{color && (color === 'red' ? 'input correct email' : 'correct')}

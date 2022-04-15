@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Input from "../Input"
-import EmailInput from "./SignUpEmailInput"
+import EmailInput from "../SignUpEmailInput"
 
 import marshImage from '../../img/marsh.jpg'
 import creeperImage from '../../img/creeper.jpg'
