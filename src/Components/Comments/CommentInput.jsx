@@ -10,7 +10,6 @@ const CommentInput = ({addNewComment}) => {
     const [comment, setComment] = useState({userName: '', email: '', image: '', text: '', secretWord: '',})
     // когда все true - разрешено создание коммента
     const [sending, setSending] = useState({userName: false, text: false, secretWord: false, email: true})
-    const [currentImage, setCurrentImage] = useState('')
 
     useEffect(() => {
         if (comment.userName) setSending({...sending, userName: true})
@@ -40,15 +39,14 @@ const CommentInput = ({addNewComment}) => {
             <label>
                 Select image: <br/>
                 <select name="userImage" defaultValue={'default'}
-                        onChange={(e) => {setComment({...comment, image: e.target.value}); setCurrentImage(e.target.value)}}>
+                        onChange={(e) => {setComment({...comment, image: e.target.value})}}>
                     <option value="default" disabled hidden>Choose image</option>
                     <option value={marshImage}>marshmallow</option>
                     <option value={creeperImage}>creeper</option>
                     <option value={animeImage}>anime girl</option>
                 </select>
-            </label>
-            <img src={currentImage} alt="" style={{width: '100px'}}/>
-            <br/>
+            </label><br/>
+            <img src={comment.image} alt="" style={{width: '100px'}}/><br/>
 
             <label>
                 Type your comment <br/>
