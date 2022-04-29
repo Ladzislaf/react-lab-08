@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/react-lab-08/static/css/main.96647d4a.css",
-    "main.js": "/react-lab-08/static/js/main.b994077e.js",
+    "main.js": "/react-lab-08/static/js/main.a0394b68.js",
     "static/media/anime.jpg": "/react-lab-08/static/media/anime.d3f7d1c0f7a1bd63fcd0.jpg",
     "static/media/marsh.jpg": "/react-lab-08/static/media/marsh.58671d452dc7ad246fb5.jpg",
     "static/media/creeper.jpg": "/react-lab-08/static/media/creeper.e65533256237357a7084.jpg",
     "index.html": "/react-lab-08/index.html",
     "main.96647d4a.css.map": "/react-lab-08/static/css/main.96647d4a.css.map",
-    "main.b994077e.js.map": "/react-lab-08/static/js/main.b994077e.js.map"
+    "main.a0394b68.js.map": "/react-lab-08/static/js/main.a0394b68.js.map"
   },
   "entrypoints": [
     "static/css/main.96647d4a.css",
-    "static/js/main.b994077e.js"
+    "static/js/main.a0394b68.js"
   ]
 }
